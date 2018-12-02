@@ -2665,7 +2665,7 @@ class Zappa(object):
                 "events": ["sns:Publish"]
             },
             lambda_arn=lambda_arn,
-            target_function="zappa.async.route_task",
+            target_function="zappa.zappa_async.route_task",
             boto_session=self.boto_session
         )
         return topic_arn
