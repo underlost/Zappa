@@ -178,8 +178,10 @@ def get_runtime_from_python_version():
     """
     if sys.version_info[0] < 3:
         return 'python2.7'
-    else:
+    elif sys.version_info.minor < 7:
         return 'python3.6'
+    else:
+        return 'python3.7'
 
 ##
 # Async Tasks
@@ -543,7 +545,7 @@ def is_valid_bucket_name(name):
     # Bucket names must start with a lowercase letter or number.
     if not (name[0].islower() or name[0].isdigit()):
         return False
-    # Bucket names must be a series of one or more labels. Adjacent labels are separated by a single period (.). 
+    # Bucket names must be a series of one or more labels. Adjacent labels are separated by a single period (.).
     for label in name.split("."):
         # Each label must start and end with a lowercase letter or a number.
         if len(label) < 1:
